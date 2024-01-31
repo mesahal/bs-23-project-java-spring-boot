@@ -25,7 +25,7 @@ public class TaskController {
      * @return The saved Task object.
      */
     @PostMapping
-    public Task saveTask(@RequestBody Task task){
+    public Task saveTask(@RequestBody Task task) {
         return taskService.saveTask(task);
     }
 
@@ -35,7 +35,7 @@ public class TaskController {
      * @return A List of all Task objects.
      */
     @GetMapping
-    public List<Task> getAllTask(){
+    public List<Task> getAllTask() {
         return taskService.getALLTask();
     }
 
@@ -46,7 +46,7 @@ public class TaskController {
      * @return An Optional containing the Task if found, or an empty Optional if not.
      */
     @GetMapping("/{id}")
-    public Optional<Task> getTaskId(@PathVariable int id){
+    public Optional<Task> getTaskId(@PathVariable int id) {
         return taskService.getTaskById(id);
     }
 
@@ -58,7 +58,7 @@ public class TaskController {
      * @return The updated Task object.
      */
     @PutMapping("/{id}")
-    public Task updateTask(@PathVariable int id, @RequestBody Task task){
+    public Task updateTask(@PathVariable int id, @RequestBody Task task) {
         return taskService.updateTask(id, task);
     }
 
@@ -68,7 +68,7 @@ public class TaskController {
      * @param id The ID of the Task to be deleted.
      */
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable int id){
+    public void deleteTask(@PathVariable int id) {
         taskService.deleteTask(id);
     }
 }
