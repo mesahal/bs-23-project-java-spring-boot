@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class LoginMessage {
+public class RegistrationMessage {
+
     String message;
     Boolean status;
 
-    public LoginMessage(String message, Boolean status) {
+    public RegistrationMessage(String message, Boolean status) {
         this.message = message;
         this.status = status;
     }

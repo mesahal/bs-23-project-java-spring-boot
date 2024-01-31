@@ -7,11 +7,21 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Global exception handler for handling common exceptions across the application.
+ */
 @ControllerAdvice
 public class CentralExceptionHandler {
+
+    /**
+     * Handles validation errors for method arguments.
+     *
+     * @param methodArgumentNotValidException The exception containing validation error details.
+     * @return ResponseEntity with the validation error message and a status code of BAD_REQUEST.
+     */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ResponseEntity<?> test(MethodArgumentNotValidException methodArgumentNotValidException) {
+    public ResponseEntity<?> handleValidationException(MethodArgumentNotValidException methodArgumentNotValidException) {
         return new ResponseEntity<>(methodArgumentNotValidException.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
     }
 }
