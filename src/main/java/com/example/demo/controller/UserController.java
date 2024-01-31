@@ -4,23 +4,22 @@ import com.example.demo.dto.LoginDTO;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.response.LoginMessage;
 import com.example.demo.service.UserService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class UserController {
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
     @PostMapping(path = "/register")
-    public String saveUser(@RequestBody UserDTO userDTO) {
-        String id = userService.addUser(userDTO);
+    public String registerUser(@RequestBody @Valid UserDTO userDTO) {
+        String id = userService.registerUser(userDTO);
         return id;
     }
 
